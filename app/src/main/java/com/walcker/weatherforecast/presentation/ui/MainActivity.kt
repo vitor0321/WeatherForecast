@@ -13,6 +13,7 @@ import com.walcker.weatherforecast.navigation.WeatherNavigation
 import com.walcker.weatherforecast.presentation.ui.theme.WeatherTheme
 import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
