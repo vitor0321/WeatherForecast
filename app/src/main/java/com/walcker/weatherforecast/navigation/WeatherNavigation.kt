@@ -4,7 +4,12 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.walcker.weatherforecast.presentation.screens.*
+import com.walcker.weatherforecast.presentation.screens.about.AboutScreen
+import com.walcker.weatherforecast.presentation.screens.favorite.FavoriteScreen
+import com.walcker.weatherforecast.presentation.screens.main.MainScreen
+import com.walcker.weatherforecast.presentation.screens.search.SearchScreen
+import com.walcker.weatherforecast.presentation.screens.settings.SettingsScreen
+import com.walcker.weatherforecast.presentation.screens.splash.SplashScreen
 
 @Composable
 fun WeatherNavigation() {

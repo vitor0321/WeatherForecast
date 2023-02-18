@@ -1,10 +1,10 @@
-package com.walcker.weatherforecast.presentation.screens
+package com.walcker.weatherforecast.presentation.screens.search
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 
 @Composable
-fun MainScreen(navController: NavHostController) {
+fun SearchScreen(navController: NavHostController) {
     Text("WeatherSplashScreen")
 }

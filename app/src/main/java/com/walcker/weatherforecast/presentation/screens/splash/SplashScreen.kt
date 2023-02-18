@@ -1,4 +1,4 @@
-package com.walcker.weatherforecast.presentation.screens
+package com.walcker.weatherforecast.presentation.screens.splash
 
 import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.Animatable

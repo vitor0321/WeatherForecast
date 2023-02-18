@@ -1,10 +1,10 @@
-package com.walcker.weatherforecast.presentation.screens
+package com.walcker.weatherforecast.presentation.screens.favorite
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 
 @Composable
-fun AboutScreen(navController: NavHostController) {
+fun FavoriteScreen(navController: NavHostController) {
     Text("WeatherSplashScreen")
 }
