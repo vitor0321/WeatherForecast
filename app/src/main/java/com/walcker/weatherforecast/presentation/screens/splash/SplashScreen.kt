@@ -42,13 +42,13 @@ fun SplashScreen(navController: NavHostController) {
                 easing = { OvershootInterpolator(8f).getInterpolation(it) }
             )
         )
-        delay(2000L)
+        delay(1000L)
         navController.navigate(WeatherScreens.MainScreen.name)
     })
 
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = Color.Black
+        color = MaterialTheme.colors.primary
     ) {
         Box(
             contentAlignment = Alignment.Center,

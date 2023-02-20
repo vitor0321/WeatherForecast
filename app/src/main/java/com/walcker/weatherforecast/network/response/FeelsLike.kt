@@ -1,8 +1,14 @@
 package com.walcker.weatherforecast.network.response
 
+import androidx.room.ColumnInfo
+
 data class FeelsLike(
+    @ColumnInfo(name = "day")
     val day: Double,
+    @ColumnInfo(name = "eve")
     val eve: Double,
+    @ColumnInfo(name = "morn")
     val morn: Double,
+    @ColumnInfo(name = "night")
     val night: Double
 )

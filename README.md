@@ -4,4 +4,10 @@ App de previsão do tempo, podendo ver o estado do tempo em qualquer cidade, bas
 ##Tools:
 * Compose
 * Retrofit
+* OkHttp
+* Coroutines
+* Coroutines Lifecycle Scopes
+* Coil
+* Hilt-Dagger
+* Room
 
