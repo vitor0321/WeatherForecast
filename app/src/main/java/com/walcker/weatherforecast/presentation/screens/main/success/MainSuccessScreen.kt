@@ -31,6 +31,7 @@ fun MainSuccessScreen(
             WeatherTopBar(
                 title = weatherResponseUI.nameCity + ", " + weatherResponseUI.country,
                 textColor = MaterialTheme.colors.secondary,
+                navController = navController,
                 onAddActionClicked = {
                     navController.navigate(WeatherScreens.SearchScreen.name)
                 },

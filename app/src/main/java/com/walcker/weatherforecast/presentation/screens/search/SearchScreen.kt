@@ -25,13 +25,14 @@ import com.walcker.weatherforecast.presentation.components.SearchTextField
 import com.walcker.weatherforecast.presentation.components.WeatherTopBar
 
 @Composable
-fun SearchScreen(navController: NavHostController, viewModel: SearchViewModel = hiltViewModel()) {
+fun SearchScreen(navController: NavHostController) {
 
     Scaffold(
         topBar = {
             WeatherTopBar(
                 title = "Searcher",
                 icon = Icons.Default.ArrowBack,
+                navController = navController,
                 isMainScreen = false,
                 textColor = MaterialTheme.colors.secondary,
                 elevation = 5.dp

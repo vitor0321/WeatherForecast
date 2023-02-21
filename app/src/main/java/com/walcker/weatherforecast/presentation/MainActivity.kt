@@ -1,4 +1,4 @@
-package com.walcker.weatherforecast.presentation.ui
+package com.walcker.weatherforecast.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
