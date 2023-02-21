@@ -16,6 +16,7 @@ import com.walcker.core.data.utils.formatDateWeek
 import com.walcker.core.data.utils.formatDecimals
 import com.walcker.core.model.WeatherItemUI
 import com.walcker.core.model.WeatherResponseUI
+import com.walcker.weatherforecast.navigation.WeatherScreens
 import com.walcker.weatherforecast.presentation.components.WeatherStateImage
 import com.walcker.weatherforecast.presentation.components.WeatherTopBar
 
@@ -30,7 +31,9 @@ fun MainSuccessScreen(
             WeatherTopBar(
                 title = weatherResponseUI.nameCity + ", " + weatherResponseUI.country,
                 textColor = MaterialTheme.colors.secondary,
-                navController = navController,
+                onAddActionClicked = {
+                    navController.navigate(WeatherScreens.SearchScreen.name)
+                },
                 elevation = 5.dp
             )
         },

@@ -25,7 +25,6 @@ fun WeatherTopBar(
     icon: ImageVector? = null,
     isMainScreen: Boolean = true,
     elevation: Dp = 0.dp,
-    navController: NavController,
     onAddActionClicked: () -> Unit = {},
     onButtonClicked: () -> Unit = {}
 ) {
@@ -43,7 +42,7 @@ fun WeatherTopBar(
             },
             actions = {
                 if (isMainScreen) {
-                    IconButton(onClick = { /*TODO*/ }) {
+                    IconButton(onClick = { onAddActionClicked()}) {
                         Icon(
                             imageVector = Icons.Default.Search,
                             contentDescription = "Search button",

@@ -1,5 +1,6 @@
 package com.walcker.weatherforecast.presentation.screens.splash
 
+import android.util.Log
 import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
@@ -24,6 +25,8 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.core.os.ConfigurationCompat
+import androidx.core.os.LocaleListCompat
 import androidx.navigation.NavHostController
 import com.walcker.weatherforecast.R
 import com.walcker.weatherforecast.navigation.WeatherScreens
@@ -33,7 +36,7 @@ import kotlinx.coroutines.delay
 fun SplashScreen(navController: NavHostController) {
 
     val scale = remember { Animatable(0f) }
-
+    val defaultCity = "São Paulo"
 
     LaunchedEffect(key1 = true, block = {
         scale.animateTo(
@@ -43,7 +46,7 @@ fun SplashScreen(navController: NavHostController) {
             )
         )
         delay(1000L)
-        navController.navigate(WeatherScreens.MainScreen.name)
+        navController.navigate(WeatherScreens.MainScreen.name+ "/$defaultCity")
     })
 
     Surface(

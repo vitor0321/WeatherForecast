@@ -9,5 +9,5 @@ App de previsão do tempo, podendo ver o estado do tempo em qualquer cidade, bas
 * Coil
 * Hilt-Dagger
 * Room
-* Compose : TopAppBAr, Surface, CircularProgressIndicator, Icon, Scaffold, Image(Coil-compose)
+* Compose : TopAppBAr, Surface, CircularProgressIndicator, Icon, Scaffold, Image(Coil-compose), TextField,
 
