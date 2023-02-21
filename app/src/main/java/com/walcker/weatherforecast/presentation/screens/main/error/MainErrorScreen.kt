@@ -1,4 +1,4 @@
-package com.walcker.weatherforecast.presentation.screens.main
+package com.walcker.weatherforecast.presentation.screens.main.error
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon

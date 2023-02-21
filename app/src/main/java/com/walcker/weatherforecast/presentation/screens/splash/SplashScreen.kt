@@ -71,7 +71,7 @@ fun SplashScreen(navController: NavHostController) {
                 color = Color.Transparent,
                 border = BorderStroke(
                     width = 2.dp,
-                    color = Color.Blue
+                    color = Color.Gray
                 )
             ) {
                 Column(
@@ -85,7 +85,7 @@ fun SplashScreen(navController: NavHostController) {
                         painter = painterResource(id = R.drawable.sun),
                         contentDescription = "Sunny icon",
                         contentScale = ContentScale.Fit,
-                        colorFilter = ColorFilter.tint(color = Color.Yellow)
+                        colorFilter = ColorFilter.tint(color = Color.Red)
                     )
                     Text(
                         text = "Find the Sun?",

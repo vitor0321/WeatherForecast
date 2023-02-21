@@ -1,4 +1,4 @@
-package com.walcker.weatherforecast.presentation.screens.main
+package com.walcker.weatherforecast.presentation.screens.main.loading
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
