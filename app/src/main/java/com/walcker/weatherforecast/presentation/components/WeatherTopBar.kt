@@ -5,14 +5,13 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.MoreVert
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
@@ -20,9 +19,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.walcker.core.data.constants.MenuEnum
+import com.walcker.core.model.FavoriteUI
 import com.walcker.weatherforecast.navigation.WeatherScreens
+import com.walcker.weatherforecast.presentation.screens.favorite.FavoriteViewModel
 
 @Composable
 fun WeatherTopBar(
@@ -31,15 +33,20 @@ fun WeatherTopBar(
     icon: ImageVector? = null,
     isMainScreen: Boolean = true,
     navController: NavController,
+    favoriteViewModel: FavoriteViewModel = hiltViewModel(),
     elevation: Dp = 0.dp,
     onAddActionClicked: () -> Unit = {},
     onButtonClicked: () -> Unit = {}
 ) {
-
     val showDialog = remember { mutableStateOf(false) }
+    val toastMessage = remember { mutableStateOf("") }
 
     if (showDialog.value) {
         ShowSettingDropDownMenu(showDialog = showDialog, navController = navController)
+    }
+
+    val isAlreadyFavoriteList = favoriteViewModel.favoriteList.collectAsState().value.filter { item ->
+        (item.city == title.split(",")[0])
     }
 
     Column {
@@ -85,6 +92,50 @@ fun WeatherTopBar(
                         tint = MaterialTheme.colors.secondary
                     )
                 }
+                if (isMainScreen) {
+                    if (isAlreadyFavoriteList.isEmpty()) {
+                        Icon(
+                            imageVector = Icons.Rounded.Favorite,
+                            contentDescription = "favorite icon",
+                            tint = Color.Red.copy(alpha = 0.3f),
+                            modifier = Modifier
+                                .padding(start = 8.dp)
+                                .scale(0.9f)
+                                .clickable {
+                                    val dataCity = title.split(",")
+                                    favoriteViewModel.insertFavorite(
+                                        FavoriteUI(
+                                            city = dataCity[0],
+                                            country = dataCity[1]
+                                        )
+                                    ).also {
+                                        toastMessage.value = "Add city in Favorite"
+                                    }
+                                }
+                        )
+                    } else {
+                        Icon(
+                            imageVector = Icons.Default.Favorite,
+                            contentDescription = "favorite icon",
+                            tint = Color.Red.copy(alpha = 0.9f),
+                            modifier = Modifier
+                                .padding(start = 8.dp)
+                                .scale(0.9f)
+                                .clickable {
+                                    val dataCity = title.split(",")
+                                    favoriteViewModel.deleteFavorites(
+                                        FavoriteUI(
+                                            city = dataCity[0],
+                                            country = dataCity[1]
+                                        )
+                                    ).also {
+                                        toastMessage.value = "Delete city by favorite"
+                                    }
+                                }
+                        )
+                    }
+                }
+                ShowShortToast(toastMessage.value)
             },
             backgroundColor = Color.Transparent,
             elevation = elevation,
@@ -120,19 +171,7 @@ fun ShowSettingDropDownMenu(
                     expanded = false
                     showDialog.value = false
                 }) {
-                    Icon(
-                        imageVector = when (text) {
-                            MenuEnum.MENU_ABOUT -> Icons.Default.Info
-                            MenuEnum.MENU_FAVORITES -> Icons.Default.FavoriteBorder
-                            MenuEnum.MENU_SETTINGS -> Icons.Default.Settings
-                        },
-                        contentDescription = null,
-                        tint = MaterialTheme.colors.onPrimary
-                    )
-
-                    Spacer(modifier = Modifier.size(4.dp))
-
-                    Text(
+                    Row(
                         modifier = Modifier.clickable {
                             navController.navigate(
                                 when (text) {
@@ -142,9 +181,24 @@ fun ShowSettingDropDownMenu(
                                 }
                             )
                         },
-                        text = text.item,
-                        fontWeight = FontWeight.W300
-                    )
+                    ) {
+                        Icon(
+                            imageVector = when (text) {
+                                MenuEnum.MENU_ABOUT -> Icons.Default.Info
+                                MenuEnum.MENU_FAVORITES -> Icons.Default.FavoriteBorder
+                                MenuEnum.MENU_SETTINGS -> Icons.Default.Settings
+                            },
+                            contentDescription = null,
+                            tint = MaterialTheme.colors.onPrimary
+                        )
+
+                        Spacer(modifier = Modifier.size(4.dp))
+
+                        Text(
+                            text = text.item,
+                            fontWeight = FontWeight.W300
+                        )
+                    }
                 }
             }
         }

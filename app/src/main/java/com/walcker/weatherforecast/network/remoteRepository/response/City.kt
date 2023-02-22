@@ -1,4 +1,4 @@
-package com.walcker.weatherforecast.network.response
+package com.walcker.weatherforecast.network.remoteRepository.response
 
 import androidx.room.ColumnInfo
 

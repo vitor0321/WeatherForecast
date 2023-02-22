@@ -1,7 +1,7 @@
 package com.walcker.weatherforecast.di
 
 import com.walcker.core.data.constants.Constants
-import com.walcker.weatherforecast.network.WeatherApi
+import com.walcker.weatherforecast.network.remoteRepository.WeatherApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

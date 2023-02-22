@@ -35,9 +35,9 @@ fun WeatherNavigation() {
             navArgument(name = NAV_KEY) {
                 type = NavType.StringType
             }
-        )) {navback->
-            navback.arguments?.getString(NAV_KEY).let {cityName->
-                MainScreen(navController = navController, cityName= cityName)
+        )) { navback ->
+            navback.arguments?.getString(NAV_KEY).let { cityName ->
+                MainScreen(navController = navController, cityName = cityName)
             }
         }
 

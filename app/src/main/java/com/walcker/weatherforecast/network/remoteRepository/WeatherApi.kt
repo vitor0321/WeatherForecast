@@ -1,7 +1,7 @@
-package com.walcker.weatherforecast.network
+package com.walcker.weatherforecast.network.remoteRepository
 
 import com.walcker.weatherforecast.BuildConfig
-import com.walcker.weatherforecast.network.response.WeatherResponse
+import com.walcker.weatherforecast.network.remoteRepository.response.WeatherResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 import javax.inject.Singleton
