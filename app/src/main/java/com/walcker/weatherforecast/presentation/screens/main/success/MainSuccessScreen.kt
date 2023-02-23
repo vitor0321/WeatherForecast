@@ -1,29 +1,22 @@
 package com.walcker.weatherforecast.presentation.screens.main.success
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.walcker.core.data.utils.formatDateWeek
-import com.walcker.core.data.utils.formatDecimals
-import com.walcker.core.model.WeatherItemUI
 import com.walcker.core.model.WeatherResponseUI
 import com.walcker.weatherforecast.navigation.WeatherScreens
-import com.walcker.weatherforecast.presentation.components.WeatherStateImage
 import com.walcker.weatherforecast.presentation.components.WeatherTopBar
 
 @Composable
 fun MainSuccessScreen(
     weatherResponseUI: WeatherResponseUI,
-    navController: NavController
+    navController: NavController,
+    isImperial: MutableState<Boolean>
 ) {
 
     Scaffold(
@@ -50,9 +43,9 @@ fun MainSuccessScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            TopWeatherDay(weatherResponseUI)
+            TopWeatherDay(weatherResponseUI = weatherResponseUI, isImperial = isImperial)
 
-            HumidityWindPressureRow(weatherItemUI = weatherResponseUI.listWeatherItem[0])
+            HumidityWindPressureRow(weatherItemUI = weatherResponseUI.listWeatherItem[0], isImperial = isImperial)
 
             Divider(color = MaterialTheme.colors.onBackground, thickness = 0.3.dp)
 

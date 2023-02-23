@@ -3,7 +3,7 @@ package com.walcker.weatherforecast.presentation.screens.splash
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.walcker.core.model.FavoriteUI
-import com.walcker.core.usecase.GetFavorites
+import com.walcker.core.usecase.favorite.GetFavorites
 import com.walcker.core.usecase.base.CoroutinesDispatchers
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

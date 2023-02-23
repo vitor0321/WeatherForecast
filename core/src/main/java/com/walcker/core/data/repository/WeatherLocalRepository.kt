@@ -1,6 +1,7 @@
 package com.walcker.core.data.repository
 
 import com.walcker.core.model.FavoriteUI
+import com.walcker.core.model.UnitUI
 import kotlinx.coroutines.flow.Flow
 
 interface WeatherLocalRepository {
@@ -16,4 +17,14 @@ interface WeatherLocalRepository {
     suspend fun deleteAllFavorite()
 
     suspend fun deleteFavorite(favoriteUI: FavoriteUI)
+
+    fun getUnits(): Flow<List<UnitUI>>
+
+    suspend fun insertUnit(unitUI: UnitUI)
+
+    suspend fun updateUnit(unitUI: UnitUI)
+
+    suspend fun deleteAllUnits()
+
+    suspend fun deleteUnit(unitUI: UnitUI)
 }

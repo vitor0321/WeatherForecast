@@ -1,24 +1,23 @@
-package com.walcker.core.usecase
+package com.walcker.core.usecase.settings
 
 import com.walcker.core.data.repository.WeatherLocalRepository
 import com.walcker.core.usecase.base.CoroutinesDispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-interface DeleteAllFavorites {
+interface DeleteAllUnitsSettings {
 
     suspend operator fun invoke()
-
 }
 
-class DeleteAllFavoritesImpl @Inject constructor(
+class DeleteAllUnitsSettingsImpl @Inject constructor(
     private val weatherRepository: WeatherLocalRepository,
     private val dispatchers: CoroutinesDispatchers
-) : DeleteAllFavorites {
+) : DeleteAllUnitsSettings {
 
     override suspend fun invoke() {
         withContext(dispatchers.io()) {
-            weatherRepository.deleteAllFavorite()
+            weatherRepository.deleteAllUnits()
         }
     }
 }

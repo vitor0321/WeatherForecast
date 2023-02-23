@@ -5,5 +5,5 @@ import com.walcker.core.model.WeatherResponseUI
 
 interface WeatherRemoteRepository {
 
-    suspend fun getWeatherByCity(cityQuery: String): DataOrException<WeatherResponseUI, Boolean, Exception>
+    suspend fun getWeatherByCity(cityQuery: String, unitQuery: String): DataOrException<WeatherResponseUI, Boolean, Exception>
 }

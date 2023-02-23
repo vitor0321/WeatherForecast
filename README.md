@@ -11,7 +11,7 @@ construção de APPs Android, e a principal ferramenta é o Jetpack Compose.
 * Coil
 * Hilt-Dagger
 * Room
-* Compose : TopAppBAr, Surface, CircularProgressIndicator, Icon, Scaffold, Image(Coil-compose), TextField,
+* Compose : TopAppBAr, Surface, CircularProgressIndicator, Icon, Scaffold, Image(Coil-compose), TextField, IconToggleButton
 
 <p><img src="https://user-images.githubusercontent.com/60984009/220477147-54ccd033-28e1-405c-a1b3-df0b43a73932.jpeg" width="60%" height="60%"/></p>
 

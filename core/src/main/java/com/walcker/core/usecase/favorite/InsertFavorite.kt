@@ -1,4 +1,4 @@
-package com.walcker.core.usecase
+package com.walcker.core.usecase.favorite
 
 import com.walcker.core.data.repository.WeatherLocalRepository
 import com.walcker.core.model.FavoriteUI

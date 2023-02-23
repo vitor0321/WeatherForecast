@@ -5,15 +5,20 @@ import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.walcker.core.data.utils.formatDecimals
 import com.walcker.core.model.WeatherItemUI
 import com.walcker.weatherforecast.R
 
 @Composable
-fun HumidityWindPressureRow(weatherItemUI: WeatherItemUI) {
+fun HumidityWindPressureRow(
+    weatherItemUI: WeatherItemUI,
+    isImperial: MutableState<Boolean>
+) {
 
     Row(
         modifier = Modifier
@@ -56,7 +61,7 @@ fun HumidityWindPressureRow(weatherItemUI: WeatherItemUI) {
                 tint = MaterialTheme.colors.secondary
             )
             Text(
-                text = " ${weatherItemUI.speed} m/s",
+                text = " ${formatDecimals(weatherItemUI.speed)} " + if (isImperial.value) "mph" else "m/s",
                 style = MaterialTheme.typography.caption,
                 color = MaterialTheme.colors.secondary
             )

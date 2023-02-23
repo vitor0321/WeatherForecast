@@ -1,6 +1,10 @@
 package com.walcker.weatherforecast.di
 
 import com.walcker.core.usecase.*
+import com.walcker.core.usecase.favorite.*
+import com.walcker.core.usecase.settings.*
+import com.walcker.core.usecase.weather.GetWeatherByCity
+import com.walcker.core.usecase.weather.GetWeatherByCityImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -30,4 +34,19 @@ interface UseCaseModule {
 
     @Binds
     fun bindUpdateFavoriteUseCase(useCase: UpdateFavoritesImpl): UpdateFavorites
+
+    @Binds
+    fun bindDeleteAllUnitsUseCase(useCase: DeleteAllUnitsSettingsImpl): DeleteAllUnitsSettings
+
+    @Binds
+    fun bindDeleteUnitUseCase(useCase: DeleteUnitSettingsImpl): DeleteUnitSettings
+
+    @Binds
+    fun bindGetUnitsUseCase(useCase: GetUnitsSettingsImpl): GetUnitsSettings
+
+    @Binds
+    fun bindInsertUnitsCase(useCase: InsertUnitsSettingsImpl): InsertUnitsSettings
+
+    @Binds
+    fun bindUpdateUnitCase(useCase: UpdateUnitSettingsImpl): UpdateUnitSettings
 }
