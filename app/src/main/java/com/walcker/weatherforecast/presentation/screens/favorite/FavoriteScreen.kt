@@ -24,7 +24,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.walcker.core.model.FavoriteUI
 import com.walcker.weatherforecast.navigation.WeatherScreens
-import com.walcker.weatherforecast.presentation.components.ShowShortToast
 import com.walcker.weatherforecast.presentation.components.WeatherTopBar
 
 @Composable

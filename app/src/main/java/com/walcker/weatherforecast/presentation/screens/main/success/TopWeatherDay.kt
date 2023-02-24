@@ -52,7 +52,7 @@ fun TopWeatherDay(
             WeatherStateImage(imageUrl = imageUrl)
 
             Text(
-                text = formatDecimals(weatherResponseUI.listWeatherItem[0].day),
+                text = formatDecimals(weatherResponseUI.listWeatherItem[0].day) + "º",
                 style = MaterialTheme.typography.h4,
                 fontWeight = FontWeight.ExtraBold,
                 color = Color.Black
