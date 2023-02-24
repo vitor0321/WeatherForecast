@@ -52,7 +52,7 @@ fun TopWeatherDay(
             WeatherStateImage(imageUrl = imageUrl)
 
             Text(
-                text = formatDecimals(weatherResponseUI.listWeatherItem[0].day) + "º" + if(isImperial.value) "F" else "C",
+                text = formatDecimals(weatherResponseUI.listWeatherItem[0].day),
                 style = MaterialTheme.typography.h4,
                 fontWeight = FontWeight.ExtraBold,
                 color = Color.Black

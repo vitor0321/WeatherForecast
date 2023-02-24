@@ -1,5 +1,6 @@
 package com.walcker.weatherforecast.presentation.components
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -14,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
@@ -39,7 +41,7 @@ fun WeatherTopBar(
     onButtonClicked: () -> Unit = {}
 ) {
     val showDialog = remember { mutableStateOf(false) }
-    val toastMessage = remember { mutableStateOf("") }
+    val context = LocalContext.current
 
     if (showDialog.value) {
         ShowSettingDropDownMenu(showDialog = showDialog, navController = navController)
@@ -109,7 +111,7 @@ fun WeatherTopBar(
                                             country = dataCity[1]
                                         )
                                     ).also {
-                                        toastMessage.value = "Add city in Favorite"
+                                        Toast.makeText(context, "Add city in Favorite", Toast.LENGTH_SHORT).show()
                                     }
                                 }
                         )
@@ -129,13 +131,12 @@ fun WeatherTopBar(
                                             country = dataCity[1]
                                         )
                                     ).also {
-                                        toastMessage.value = "Delete city by favorite"
+                                        Toast.makeText(context, "Delete city by favorite", Toast.LENGTH_SHORT).show()
                                     }
                                 }
                         )
                     }
                 }
-                ShowShortToast(toastMessage.value)
             },
             backgroundColor = Color.Transparent,
             elevation = elevation,

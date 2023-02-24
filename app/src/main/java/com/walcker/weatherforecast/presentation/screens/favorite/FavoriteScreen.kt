@@ -1,5 +1,6 @@
 package com.walcker.weatherforecast.presentation.screens.favorite
 
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -17,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
@@ -81,7 +83,7 @@ fun CityRow(
     favoriteViewModel: FavoriteViewModel,
     navController: NavHostController
 ) {
-    val toastMessage = remember { mutableStateOf("") }
+    val context = LocalContext.current
 
     Surface(
         modifier = Modifier
@@ -141,12 +143,11 @@ fun CityRow(
                     contentDescription = "delete favorite",
                     modifier = Modifier.clickable {
                         favoriteViewModel.deleteFavorites(favoriteUI).also {
-                            toastMessage.value = "Delete city by favorite"
+                            Toast.makeText(context, "Delete city by favorite", Toast.LENGTH_SHORT).show()
                         }
                     },
                     tint = Color.Red.copy(alpha = 0.5f)
                 )
-                ShowShortToast(toastMessage.value)
             }
         }
     }
