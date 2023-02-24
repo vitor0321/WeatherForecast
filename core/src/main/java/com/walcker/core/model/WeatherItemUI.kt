@@ -1,10 +1,10 @@
-package com.walcker.weatherforecast.network.response
+package com.walcker.core.model
 
-data class WeatherItem(
+
+data class WeatherItemUI(
     val clouds: Int,
     val deg: Int,
     val dt: Int,
-    val feels_like: FeelsLike,
     val gust: Double,
     val humidity: Int,
     val pop: Double,
@@ -13,6 +13,11 @@ data class WeatherItem(
     val speed: Double,
     val sunrise: Int,
     val sunset: Int,
-    val temp: Temp,
-    val weather: List<WeatherObject>
+    val day: Double,
+    val max: Double,
+    val min: Double,
+    val eve: Double,
+    val morn: Double,
+    val night: Double,
+    val weather: List<WeatherObjectUI>
 )

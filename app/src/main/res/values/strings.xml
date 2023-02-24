@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">WeatherForecast</string>
+    <string name="app_name">Weather Forecast</string>
+    <string name="why_open_weather">Why OpenWeather</string>
+    <string name="open_weather_is_a_team">OpenWeather is a team of IT experts and data scientists that has been practicing deep weather data science since 2014.</string>
+    <string name="our_highly_efficient_technological">Our highly efficient technological platform is based on ML, neural networks, and data science technologies.</string>
+    <string name="the_proprietary_convolutional">The proprietary convolutional neural network collects and processes wide range of data sources to cover any location and consider the local nuances of climate.</string>
+    <string name="we_collect_and_process">We collect and process weather data from different sources such as global and local weather models, satellites, radars and vast network of weather stations.</string>
+    <string name="about_more_info">About more information: </string>
+    <string name="http_open_weather_map"> https://openweathermap.org </string>
 </resources>

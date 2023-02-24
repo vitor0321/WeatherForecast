@@ -13,9 +13,7 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
@@ -24,15 +22,26 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.walcker.core.data.constants.Constants.DEFAULT_CITY
 import com.walcker.weatherforecast.R
 import com.walcker.weatherforecast.navigation.WeatherScreens
+import com.walcker.weatherforecast.presentation.screens.favorite.FavoriteViewModel
 import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen(navController: NavHostController) {
+fun SplashScreen(
+    navController: NavHostController,
+    splashViewModel: SplashViewModel = hiltViewModel()
+) {
 
     val scale = remember { Animatable(0f) }
+    val defaultCity = remember { mutableStateOf(DEFAULT_CITY) }
+
+    val favoriteList = splashViewModel.favoriteList.collectAsState().value
+    defaultCity.value = if (favoriteList.isNotEmpty()) favoriteList.first().city else DEFAULT_CITY
 
 
     LaunchedEffect(key1 = true, block = {
@@ -42,13 +51,13 @@ fun SplashScreen(navController: NavHostController) {
                 easing = { OvershootInterpolator(8f).getInterpolation(it) }
             )
         )
-        delay(2000L)
-        navController.navigate(WeatherScreens.MainScreen.name)
+        delay(1000L)
+        navController.navigate(WeatherScreens.MainScreen.name + "/${defaultCity.value}")
     })
 
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = Color.Black
+        color = MaterialTheme.colors.primary
     ) {
         Box(
             contentAlignment = Alignment.Center,
@@ -71,7 +80,7 @@ fun SplashScreen(navController: NavHostController) {
                 color = Color.Transparent,
                 border = BorderStroke(
                     width = 2.dp,
-                    color = Color.Blue
+                    color = Color.Gray
                 )
             ) {
                 Column(
@@ -85,7 +94,7 @@ fun SplashScreen(navController: NavHostController) {
                         painter = painterResource(id = R.drawable.sun),
                         contentDescription = "Sunny icon",
                         contentScale = ContentScale.Fit,
-                        colorFilter = ColorFilter.tint(color = Color.Yellow)
+                        colorFilter = ColorFilter.tint(color = Color.Red)
                     )
                     Text(
                         text = "Find the Sun?",

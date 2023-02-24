@@ -1,6 +1,7 @@
-package com.walcker.weatherforecast.network.response
+package com.walcker.core.model
 
-data class WeatherObject(
+
+data class WeatherObjectUI(
     val description: String,
     val icon: String,
     val id: Int,

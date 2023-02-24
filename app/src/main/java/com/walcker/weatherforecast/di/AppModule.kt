@@ -1,7 +1,7 @@
 package com.walcker.weatherforecast.di
 
 import com.walcker.core.data.constants.Constants
-import com.walcker.weatherforecast.network.WeatherApi
+import com.walcker.weatherforecast.network.remoteRepository.WeatherApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,10 +12,10 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class AppModule {
+object AppModule {
 
-    @Provides
     @Singleton
+    @Provides
     fun provideOpenWeatherApi(): WeatherApi {
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
